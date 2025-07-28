@@ -33,6 +33,12 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 # Set working directory
 WORKDIR /var/www/html
 
+# COPY ./tools/wp-config.php /var/www/html/wp-config.php
+
+# # Set permissions (in Dockerfile or entrypoint)
+# RUN chown www-data:www-data /var/www/html/wp-config.php \
+#     && chmod 640 /var/www/html/wp-config.php
+
 # (Optional) Copy a static wp-config.php if you want
 # COPY ./tools/wp-config.php /var/www/html/wp-config.php
 

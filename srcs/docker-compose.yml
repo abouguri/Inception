@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   nginx:
     build:
@@ -30,8 +28,7 @@ services:
       - .env
 
   mariadb:
-    build:
-      context: ./requirements/mariadb
+    image: mariadb:10.5
     container_name: mariadb
     volumes:
       - mariadb_data:/var/lib/mysql
