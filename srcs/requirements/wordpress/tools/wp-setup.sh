@@ -4,17 +4,17 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     # Download WordPress core files
     wp core download --allow-root
 
-    # Create wp-config.php
+    # Wait for MariaDB to be ready
+    while ! mysqladmin ping -h mariadb --silent; do
+        sleep 1
+    done
+
+    # Now create wp-config.php
     wp config create --dbname=$MYSQL_DATABASE \
                     --dbuser=$MYSQL_USER \
                     --dbpass=$MYSQL_PASSWORD \
                     --dbhost=mariadb \
                     --allow-root
-
-    # Wait for MariaDB to be ready
-    while ! mysqladmin ping -h mariadb --silent; do
-        sleep 1
-    done
 
     # Install WordPress
     wp core install --url=$DOMAIN_NAME \
