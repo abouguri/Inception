@@ -8,7 +8,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - wordpress_/var/www/html
+      - wordpress_data:/var/www/html
       - ./requirements/nginx/ssl:/etc/nginx/ssl
     networks:
       - inception_network
@@ -24,7 +24,7 @@ services:
       - .env  # ← CORRECT LOCATION
     container_name: ${USER}_wordpress
     volumes:
-      - wordpress_/var/www/html
+      - wordpress_data:/var/www/html
     networks:
       - inception_network
     restart: unless-stopped
