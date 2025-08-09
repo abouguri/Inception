@@ -2,7 +2,7 @@
 set -e
 
 echo "=== MariaDB Init Script Started ==="
-echo "MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD"
+echo "MYSQL_ROOT_PASSWORD: ***"
 echo "MYSQL_DATABASE: $MYSQL_DATABASE"
 echo "MYSQL_USER: $MYSQL_USER"
 
@@ -26,15 +26,11 @@ if [ ! -f "/var/lib/mysql/.mariadb_setup_complete" ]; then
     echo "=== Setting up initial configuration ==="
     mysql -u root <<-EOSQL
         FLUSH PRIVILEGES;
-        SET @@SESSION.SQL_LOG_BIN=0;
-        DELETE FROM mysql.user WHERE User='';
-        DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
         ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
         CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`;
         CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
         GRANT ALL PRIVILEGES ON \`$MYSQL_DATABASE\`.* TO '$MYSQL_USER'@'%';
         FLUSH PRIVILEGES;
-        SELECT user, host FROM mysql.user WHERE user='$MYSQL_USER';
 EOSQL
     
     echo "=== Database setup completed ==="

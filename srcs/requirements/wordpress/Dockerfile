@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
 # Optional: Set up locale
 RUN apt-get update && apt-get install -y locales && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
+    locale-gen && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y iputils-ping && rm -rf /var/lib/apt/lists/*
 
@@ -32,15 +33,6 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 # Set working directory
 WORKDIR /var/www/html
-
-# COPY ./tools/wp-config.php /var/www/html/wp-config.php
-
-# # Set permissions (in Dockerfile or entrypoint)
-# RUN chown www-data:www-data /var/www/html/wp-config.php \
-#     && chmod 640 /var/www/html/wp-config.php
-
-# (Optional) Copy a static wp-config.php if you want
-# COPY ./tools/wp-config.php /var/www/html/wp-config.php
 
 # Copy WordPress setup script
 COPY ./tools/wp-setup.sh /usr/local/bin/

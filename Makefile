@@ -27,15 +27,15 @@ clean: down
 	@docker system prune -a --force
 	@docker volume prune -f
 	@echo "🧹 Removing project data (Inception-compliant)"
-	@sudo rm -rf /home/abouguri/data
+	@rm -rf /home/abouguri/data
 
 fclean: clean
 	@echo "🧹 Removing named volumes"
 	@docker compose -f srcs/docker-compose.yml down -v 2>/dev/null || true
 	@docker volume rm srcs_mariadb_data srcs_wordpress_data 2>/dev/null || true
 	@echo "🧹 Removing host entry"
-	@sudo sed -i.bak '/$(USER).42.fr/d' /etc/hosts 2>/dev/null || true
-	@sudo rm -f /etc/hosts.bak 2>/dev/null || true
+	@sed -i.bak '/$(USER).42.fr/d' /etc/hosts 2>/dev/null || true
+	@rm -f /etc/hosts.bak 2>/dev/null || true
 
 re: fclean all
 
