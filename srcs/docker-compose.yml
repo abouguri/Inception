@@ -73,10 +73,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ../data/wordpress
+      device: /home/abouguri/data/wordpress
   mariadb_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ../data/mariadb
+      device: /home/abouguri/data/mariadb
