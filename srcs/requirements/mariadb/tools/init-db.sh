@@ -6,8 +6,9 @@ echo "MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD"
 echo "MYSQL_DATABASE: $MYSQL_DATABASE"
 echo "MYSQL_USER: $MYSQL_USER"
 
-# Check if our custom database has been created (instead of just checking system files)
-if ! mysql -e "USE \`$MYSQL_DATABASE\`;" 2>/dev/null; then
+# Check if this is a fresh MariaDB installation
+# We check for a marker file that indicates setup is complete
+if [ ! -f "/var/lib/mysql/.mariadb_setup_complete" ]; then
     echo "=== Setting up custom database and users ==="
     
     # Start MySQL server temporarily for initial setup
@@ -30,7 +31,7 @@ if ! mysql -e "USE \`$MYSQL_DATABASE\`;" 2>/dev/null; then
         DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
         ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
         CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`;
-        CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+        CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
         GRANT ALL PRIVILEGES ON \`$MYSQL_DATABASE\`.* TO '$MYSQL_USER'@'%';
         FLUSH PRIVILEGES;
         SELECT user, host FROM mysql.user WHERE user='$MYSQL_USER';
@@ -38,11 +39,14 @@ EOSQL
     
     echo "=== Database setup completed ==="
     
+    # Create marker file to indicate setup is complete
+    touch /var/lib/mysql/.mariadb_setup_complete
+    
     # Stop the temporary server
     mysqladmin -u root -p"$MYSQL_ROOT_PASSWORD" shutdown
     echo "=== Temporary server stopped ==="
 else
-    echo "=== Custom database $MYSQL_DATABASE already exists ==="
+    echo "=== MariaDB already initialized (marker file exists) ==="
 fi
 
 # Start MySQL server normally
