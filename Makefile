@@ -4,10 +4,10 @@ all: prepare build up
 
 prepare:
 	@echo "🔧 Creating project-local data directories..."
-	@mkdir -p /home/abouguri/data/mariadb /home/abouguri/data/wordpress
+	@mkdir -p /home/$(USER)/data/mariadb /home/$(USER)/data/wordpress
 	@echo "🔒 Setting correct permissions for containers..."
-	@chown -R 999 /home/abouguri/data/mariadb 2>/dev/null || true  # MariaDB UID
-	@chown -R 82 /home/abouguri/data/wordpress 2>/dev/null || true # WordPress UID
+	@chown -R 999 /home/$(USER)/data/mariadb 2>/dev/null || true  # MariaDB UID
+	@chown -R 82 /home/$(USER)/data/wordpress 2>/dev/null || true # WordPress UID
 	@echo "🌐 Adding host entry (no sudo required!)"
 	@echo "127.0.0.1 $(USER).42.fr" | tee -a ./hosts.tmp
 	@sudo cp ./hosts.tmp /etc/hosts && rm -f ./hosts.tmp
@@ -27,7 +27,8 @@ clean: down
 	@docker system prune -a --force
 	@docker volume prune -f
 	@echo "🧹 Removing project data (Inception-compliant)"
-	@rm -rf /home/abouguri/data
+	@sudo chown -R $(USER):$(USER) /home/$(USER)/data 2>/dev/null || true
+	@rm -rf /home/$(USER)/data
 
 fclean: clean
 	@echo "🧹 Removing named volumes"
