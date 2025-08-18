@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inception Project - Docker Infrastructure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <div class="aside">
+            <div class="logo">
+                <a href="#"><span>I</span>nception</a>
+            </div>
+            <ul class="nav">
+                <li><a href="#home" class="active"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#services"><i class="fa fa-server"></i> Services</a></li>
+                <li><a href="#architecture"><i class="fa fa-sitemap"></i> Architecture</a></li>
+                <li><a href="#bonus"><i class="fa fa-star"></i> Bonus</a></li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Home Section -->
+            <section class="home section active" id="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="home-info padd-15">
+                            <h3 class="hello">Welcome to <span class="name">Inception Project</span></h3>
+                            <h3 class="my-profession">A <span class="typing">Docker Infrastructure</span></h3>
+                            <p>This project demonstrates a complete containerized infrastructure using Docker Compose. It includes NGINX with SSL/TLS, WordPress with PHP-FPM, MariaDB database, and additional bonus services like Adminer and a static website.</p>
+                            <br>
+                            <a href="#services" class="btn">Explore Services</a>
+                        </div>
+                        <div class="home-img padd-15">
+                            <div class="docker-logo">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services section" id="services">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Core Services</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- NGINX Service -->
+                        <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>NGINX Proxy</h4>
+                                <p>Reverse proxy server with SSL/TLS encryption. Handles all incoming requests and routes them to appropriate services securely.</p>
+                                <div class="service-status">
+                                    <span class="status-badge running">Running on port 443</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WordPress Service -->
+                        <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fab fa-wordpress"></i>
+                                </div>
+                                <h4>WordPress</h4>
+                                <p>Content management system with PHP-FPM. Fully configured WordPress installation with custom themes and plugins support.</p>
+                                <div class="service-status">
+                                    <span class="status-badge running">PHP-FPM Ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MariaDB Service -->
+                        <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h4>MariaDB</h4>
+                                <p>High-performance database server. Configured with persistent volumes and optimized for WordPress integration with remote access.</p>
+                                <div class="service-status">
+                                    <span class="status-badge running">Database Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section class="architecture section" id="architecture">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>System Architecture</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="architecture-content padd-15">
+                            <div class="arch-item">
+                                <div class="arch-header">
+                                    <h3><i class="fas fa-network-wired"></i> Network Configuration</h3>
+                                </div>
+                                <div class="arch-details">
+                                    <p>Custom Docker bridge network enabling secure inter-service communication. All services are isolated and communicate through defined interfaces.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="arch-item">
+                                <div class="arch-header">
+                                    <h3><i class="fas fa-hdd"></i> Volume Management</h3>
+                                </div>
+                                <div class="arch-details">
+                                    <p>Persistent data storage using Docker volumes. WordPress files and MariaDB data are preserved across container restarts and updates.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="arch-item">
+                                <div class="arch-header">
+                                    <h3><i class="fas fa-lock"></i> Security Features</h3>
+                                </div>
+                                <div class="arch-details">
+                                    <p>SSL/TLS encryption, secure container networking, and isolated service environments. Each service runs with minimal required privileges.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bonus Section -->
+            <section class="bonus section" id="bonus">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Bonus Services</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Adminer -->
+                        <div class="bonus-item padd-15">
+                            <div class="bonus-item-inner">
+                                <div class="icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Adminer</h4>
+                                <p>Database management interface for easy MariaDB administration. Access your database with a modern web interface.</p>
+                                <a href="https://abouguri.42.fr:8080" target="_blank" class="btn btn-sm">Open Adminer</a>
+                            </div>
+                        </div>
+
+                        <!-- Static Website -->
+                        <div class="bonus-item padd-15">
+                            <div class="bonus-item-inner">
+                                <div class="icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h4>Static Website</h4>
+                                <p>This portfolio website showcasing the Inception project architecture and services. Built with modern CSS and responsive design.</p>
+                                <a href="https://abouguri.42.fr:8888" target="_blank" class="btn btn-sm">You're Here!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -71,6 +71,17 @@ services:
       mariadb:
         condition: service_healthy
 
+  # Bonus: Static website for project documentation
+  website:
+    build:
+      context: ./requirements/bonus/website
+    container_name: ${USER}_website
+    ports:
+      - "8888:8888"
+    networks:
+      - inception_network
+    restart: unless-stopped
+
 networks:
   inception_network:
     driver: bridge
