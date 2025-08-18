@@ -55,6 +55,22 @@ services:
       timeout: 5s
       retries: 10
 
+  # Bonus: Adminer for database management
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer
+    env_file:
+      - .env
+    container_name: ${USER}_adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - inception_network
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
 networks:
   inception_network:
     driver: bridge

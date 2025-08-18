@@ -13,30 +13,30 @@ prepare:
 	@sudo cp ./hosts.tmp /etc/hosts && rm -f ./hosts.tmp
 
 build:
-	@docker-compose -f srcs/docker-compose.yml build
+	@docker compose -f srcs/docker-compose.yml build
 
 up:
-	@docker-compose -f srcs/docker-compose.yml up -d
+	@docker compose -f srcs/docker-compose.yml up -d
 	@echo "\n✅ Inception stack running! Test with:"
 	@echo "   curl -k https://$(USER).42.fr"
 
 down:
-	@docker-compose -f srcs/docker-compose.yml down
+	@docker compose -f srcs/docker-compose.yml down
 
 clean: down
 	@docker system prune -a --force
 	@docker volume prune -f
 	@echo "🧹 Removing project data (Inception-compliant)"
 	@sudo chown -R $(USER):$(USER) /home/$(USER)/data 2>/dev/null || true
-	@rm -rf /home/$(USER)/data
+	@sudo rm -rf /home/$(USER)/data 2>/dev/null || true
 
 fclean: clean
 	@echo "🧹 Removing named volumes"
-	@docker-compose -f srcs/docker-compose.yml down -v 2>/dev/null || true
+	@docker compose -f srcs/docker-compose.yml down -v 2>/dev/null || true
 	@docker volume rm srcs_mariadb_data srcs_wordpress_data 2>/dev/null || true
 	@echo "🧹 Removing host entry"
-	@sed -i.bak '/$(USER).42.fr/d' /etc/hosts 2>/dev/null || true
-	@rm -f /etc/hosts.bak 2>/dev/null || true
+	@sudo sed -i.bak '/$(USER).42.fr/d' /etc/hosts 2>/dev/null || true
+	@sudo rm -f /etc/hosts.bak 2>/dev/null || true
 
 re: fclean all
 
