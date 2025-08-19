@@ -2,7 +2,8 @@
 
 <div align="center">
 
-[![42 School](https://img.shields.io/badge/42-School-000000?style=for-the-badge&logo=42&logoColor=white)](https://42.fr/)
+[![1337 School](https://img.shields.io/badge/1337-School-000000?style=for-the-badge&logo=42&logoColor=white)](https://1337.ma/)
+[![42 Network](https://img.shields.io/badge/42-Network-000000?style=for-the-badge&logo=42&logoColor=white)](https://42.fr/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)](https://nginx.org/)
 [![WordPress](https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/)
@@ -37,7 +38,7 @@
 **Inception** is a comprehensive Docker infrastructure project that demonstrates the creation of a multi-service containerized environment. This project showcases modern DevOps practices by orchestrating multiple services using Docker Compose, implementing SSL/TLS encryption, and providing a complete web application stack.
 
 ### 🎓 Academic Context
-This project is part of the **42 School curriculum**, focusing on:
+This project is part of the **1337 Coding School curriculum** (42 Network - Morocco), focusing on:
 - Containerization with Docker
 - Service orchestration with Docker Compose
 - Network security and SSL/TLS
@@ -354,7 +355,7 @@ curl -I https://abouguri.42.fr
 - [WordPress Developer Resources](https://developer.wordpress.org/)
 - [MariaDB Knowledge Base](https://mariadb.com/kb/en/)
 
-### 🎯 42 School Requirements
+### 🎯 1337 School Requirements
 
 This project fulfills all mandatory requirements:
 - ✅ Custom Dockerfiles for each service
@@ -399,16 +400,17 @@ Have ideas for improvements?
 
 ## 📄 License
 
-This project is part of the 42 School curriculum and is intended for educational purposes.
+This project is part of the 1337 Coding School curriculum (42 Network) and is intended for educational purposes.
 
 ---
 
 ## 👨‍💻 Author
 
-**abouguri** - 42 School Student
+**abouguri** - 1337 Coding School Student (42 Network - Morocco)
 
 - GitHub: [@abouguri](https://github.com/abouguri)
-- 42 Profile: [abouguri](https://profile.intra.42.fr/users/abouguri)
+- 1337 Profile: [abouguri](https://profile.intra.42.fr/users/abouguri)
+- LinkedIn: [Connect with me](https://linkedin.com/in/abouguri)
 
 ---
 
@@ -416,6 +418,6 @@ This project is part of the 42 School curriculum and is intended for educational
 
 ### 🌟 Star this repository if it helped you! 
 
-*Made with ❤️ at 42 School*
+*Made with ❤️ at 1337 Coding School, Morocco 🇲🇦*
 
 </div>
