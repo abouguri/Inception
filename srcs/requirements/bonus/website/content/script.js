@@ -1,7 +1,25 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const navToggler = document.querySelector('.nav-toggler');
+    const aside = document.querySelector('.aside');
     const navLinks = document.querySelectorAll('.nav a');
     const sections = document.querySelectorAll('.section');
+    
+    // Mobile navigation toggle
+    if (navToggler) {
+        navToggler.addEventListener('click', function() {
+            aside.classList.toggle('open');
+            navToggler.classList.toggle('open');
+        });
+    }
+    
+    // Close mobile nav when clicking on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            aside.classList.remove('open');
+            navToggler.classList.remove('open');
+        });
+    });
     
     // Function to show a section
     function showSection(target) {
@@ -54,6 +72,39 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = themeToggle.querySelector('span');
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update button based on current theme
+    updateThemeButton(currentTheme);
+    
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeButton(newTheme);
+    });
+    
+    function updateThemeButton(theme) {
+        if (theme === 'dark') {
+            themeIcon.className = 'fas fa-sun';
+            themeText.textContent = 'Light Mode';
+        } else {
+            themeIcon.className = 'fas fa-moon';
+            themeText.textContent = 'Dark Mode';
+        }
+    }
 });
 
 // Typing animation effect

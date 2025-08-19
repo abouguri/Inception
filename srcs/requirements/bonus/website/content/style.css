@@ -1,15 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700&display=swap');
 
 /* CSS Variables for theming */
-:root {
-    --bg-black-900: #151515;
-    --bg-black-100: #222222;
-    --bg-black-50: #393939;
-    --text-black-900: #ffffff;
-    --text-black-700: #e9e9e9;
-    --skin-color: #7c4820;
-    --accent-color: #f39c12;
+
+/* :root {
+  --bg-black-900: #fdfdfd;
+  --bg-black-100: #f4f4f4;
+  --bg-black-50:  #e8e8e8;
+  --text-black-900: #151515;
+  --text-black-700: #393939;
+  --skin-color: #a0522d;
+  --accent-color: #d4a017;
 }
+
+[data-theme="dark"] {
+  --bg-black-900: #151515;
+  --bg-black-100: #222222;
+  --bg-black-50: #393939;
+  --text-black-900: #ffffff;
+  --text-black-700: #e9e9e9;
+  --skin-color: #7c4820;
+  --accent-color: #f39c12;
+} */
+
+:root {
+  --bg-black-900: #fdfefe;   /* main background – soft off-white */
+  --bg-black-100: #f3f6f7;   /* secondary background – light gray-blue */
+  --bg-black-50:  #e6eaec;   /* subtle contrast background */
+  --text-black-900: #1a1d1f; /* primary text – deep charcoal */
+  --text-black-700: #40484c; /* secondary text – muted gray */
+  --skin-color: #2f4f4f;     /* elegant dark slate */
+  --accent-color: #4a90e2;   /* refined cool blue */
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --bg-black-900: #0f1113;   /* main background – near black with cool tone */
+  --bg-black-100: #181c1f;   /* secondary background – deep charcoal */
+  --bg-black-50:  #252a2e;   /* subtle contrast background */
+  --text-black-900: #f5f7f8; /* primary text – near white */
+  --text-black-700: #cfd6da; /* secondary text – soft light gray-blue */
+  --skin-color: #3d5a5a;     /* elegant muted teal */
+  --accent-color: #5dade2;   /* sleek azure accent */
+}
+
 
 /* Reset and base styles */
 * {
@@ -241,6 +274,106 @@ body {
     color: var(--skin-color);
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+}
+
+.theme-btn {
+    background: var(--skin-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Inconsolata', monospace;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-btn i {
+    font-size: 16px;
+}
+
+/* Theme transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Nav Toggler for Mobile */
+.nav-toggler {
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--bg-black-50);
+    cursor: pointer;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    border-radius: 5px;
+    background: var(--bg-black-100);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    transition: all 0.3s ease;
+}
+
+.nav-toggler span {
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    display: inline-block;
+    position: relative;
+}
+
+.nav-toggler span::before {
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+
+.nav-toggler span::after {
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+
+.nav-toggler.open span {
+    background: transparent;
+}
+
+.nav-toggler.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggler.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
 /* Home Section */
 .home .home-info {
     flex: 0 0 60%;
@@ -366,6 +499,11 @@ body {
     background: #27ae60;
 }
 
+.services .service-item-inner .btn {
+    margin-top: 15px;
+    display: inline-block;
+}
+
 /* Architecture Section */
 .architecture .architecture-content {
     flex: 0 0 100%;
@@ -477,12 +615,31 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1199px) {
+    .nav-toggler {
+        display: flex;
+    }
+    
     .aside {
         left: -270px;
+        transition: all 0.3s ease;
+    }
+    
+    .aside.open {
+        left: 0;
     }
     
     .main-content {
         padding-left: 0;
+    }
+    
+    .theme-toggle {
+        top: 15px;
+        right: 75px; /* Move left to avoid nav toggler */
+    }
+    
+    .theme-btn {
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }
 
@@ -509,6 +666,22 @@ body {
     
     .section {
         padding: 0 20px;
+    }
+    
+    .theme-toggle {
+        top: 70px;
+        right: 20px;
+    }
+    
+    .theme-btn span {
+        display: none; /* Hide text on very small screens */
+    }
+    
+    .theme-btn {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
     }
 }
 

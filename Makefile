@@ -19,8 +19,8 @@ up:
 	@docker compose -f srcs/docker-compose.yml up -d
 	@echo "\n✅ Inception stack running! Test with:"
 	@echo "   curl -k https://$(USER).42.fr        # Main WordPress site (HTTPS)"
-	@echo "   curl -k http://localhost:8888        # Bonus static website"
-	@echo "   curl -k http://localhost:8080        # Adminer database manager"
+	@echo "   curl -k http://$(USER).42.fr:8888       # Bonus static website"
+	@echo "   curl -k http://$(USER).42.fr:8080        # Adminer database manager"
 
 down:
 	@docker compose -f srcs/docker-compose.yml down
