@@ -410,7 +410,7 @@ This project is part of the 1337 Coding School curriculum (42 Network) and is in
 
 - GitHub: [@abouguri](https://github.com/abouguri)
 - 1337 Profile: [abouguri](https://profile.intra.42.fr/users/abouguri)
-- LinkedIn: [Connect with me](https://linkedin.com/in/abouguri)
+- LinkedIn: [Connect with me](https://www.linkedin.com/in/abdelaadim-bougurine)
 
 ---
 
