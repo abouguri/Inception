@@ -19,7 +19,8 @@ up:
 	@docker compose -f srcs/docker-compose.yml up -d
 	@echo "\n✅ Inception stack running! Test with:"
 	@echo "   curl -k https://$(USER).42.fr"
-	@echo "   curl -k http://localhost:8080   # Static website test"
+	@echo "   curl -k http://localhost:8888   # Static website test"
+	@echo "   curl -k http://localhost:8080   # Adminer"
 
 down:
 	@docker compose -f srcs/docker-compose.yml down
