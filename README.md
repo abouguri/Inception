@@ -292,16 +292,16 @@ The project uses self-signed certificates for development. For production:
 <summary>🖼️ Click to view screenshots</summary>
 
 ### 🌐 WordPress Homepage
-![WordPress](https://via.placeholder.com/800x400/21759B/white?text=WordPress+Homepage)
+![WordPress](assets/screenshots/wordpress-homepage.png)
 
 ### 🔧 Adminer Interface
-![Adminer](https://via.placeholder.com/800x400/34495e/white?text=Adminer+Database+Admin)
+![Adminer](assets/screenshots/adminer-interface.png)
 
 ### 🎨 Portfolio Website - Light Mode
-![Portfolio Light](https://via.placeholder.com/800x400/fdfdfd/151515?text=Portfolio+Light+Mode)
+![Portfolio Light](assets/screenshots/portfolio-light.png)
 
 ### 🌙 Portfolio Website - Dark Mode
-![Portfolio Dark](https://via.placeholder.com/800x400/151515/ffffff?text=Portfolio+Dark+Mode)
+![Portfolio Dark](assets/screenshots/portfolio-dark.png)
 
 </details>
 
